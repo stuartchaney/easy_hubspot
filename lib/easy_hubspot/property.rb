@@ -14,6 +14,10 @@ module EasyHubspot
         Client.do_get(properties_endpoint(object_type), headers)
       end
 
+      def create_property(object_type, property_params)
+        Client.do_post(properties_endpoint(object_type), property_params, headers)
+      end
+
       private
 
       def properties_endpoint(object_type)

@@ -44,7 +44,7 @@ module EasyHubspot
 
       private
 
-      def company_id_endpoint(company_id, property_list)
+    def company_id_endpoint(company_id, property_list = [])
         property_list = get_all_properties if property_list.empty?
         url = "#{COMPANY_ENDPOINT}/#{company_id}"
         url += "?properties=#{CGI.escape(property_list.join(','))}"

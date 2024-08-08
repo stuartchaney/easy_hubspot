@@ -38,6 +38,25 @@ module EasyHubspot
         end
       end
 
+      def search_companies(domain)
+        url = "#{COMPANY_ENDPOINT}/search"
+        body = {
+          filterGroups: [
+            {
+              filters: [
+                {
+                  propertyName: "domain",
+                  operator: "EQ",
+                  value: domain
+                }
+              ]
+            }
+          ],
+          limit: 10
+        }
+        Client.do_post(url, body.to_json, headers)
+      end
+
       def get_all_properties
         @get_all_properties ||= EasyHubspot::Property.get_properties("companies")[:results].collect { |property| property[:name] }
       end
